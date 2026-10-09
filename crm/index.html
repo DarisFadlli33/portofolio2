@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101310">
+    <title>Portfolio CRM</title>
+    <link rel="stylesheet" href="./style.css?v=3">
+    <script type="module" src="./app.js?v=3"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#"><span class="brand-mark">P</span><span>Portfolio<span class="muted"> CRM</span></span></a>
+        <p class="nav-label">KONTEN WEBSITE</p>
+        <nav aria-label="Navigasi CRM">
+          <button class="nav-item active" data-page="profile"><span>01</span> Profil</button>
+          <button class="nav-item" data-page="skills"><span>02</span> Keahlian</button>
+          <button class="nav-item" data-page="projects"><span>03</span> Proyek</button>
+          <button class="nav-item" data-page="education"><span>04</span> Pendidikan</button>
+        </nav>
+        <div class="local-note"><span class="live-dot"></span><div><strong>Mode lokal</strong><small>Hanya untuk komputer ini</small></div></div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div><p class="eyebrow">PENGELOLA KONTEN</p><h1 id="page-title">Profil</h1></div>
+          <a class="site-link" href="http://localhost:5173" target="_blank" rel="noopener">Lihat website <span aria-hidden="true">↗</span></a>
+        </header>
+        <div id="notice" class="notice" role="status" aria-live="polite">Menghubungkan ke API…</div>
+
+        <section class="page active" id="page-profile">
+          <div class="section-intro">
+            <div><h2>Informasi profil</h2><p>Data ini dipakai pada bagian profil dan kontak website utama.</p></div>
+            <button class="button primary" id="edit-profile" type="button">Edit profil</button>
+          </div>
+          <article id="profile-view" class="profile-card" aria-live="polite"></article>
+          <form id="profile-form" class="editor" hidden>
+            <div class="field-grid">
+              <label>Nama<input name="name" maxlength="120" required></label>
+              <label>Headline<input name="headline" maxlength="180" required placeholder="Mahasiswa / Backend Learner"></label>
+              <label class="wide">Ringkasan<textarea name="summary" rows="4" required></textarea></label>
+              <label>Email<input name="email" type="email" maxlength="255" required></label>
+              <label>Lokasi<input name="location" maxlength="160" required></label>
+              <label class="wide">Upload foto profil
+                <input name="photo_file" type="file" accept="image/jpeg,image/png,image/gif">
+                <small class="image-info" data-image-info>Format JPEG, PNG, atau GIF; maksimal 8 MB. Dimensi pixel tampil otomatis.</small>
+                <img class="image-preview" alt="Pratinjau foto profil" hidden>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="button primary" type="submit">Simpan profil</button>
+              <button class="button secondary" id="cancel-profile" type="button">Batal</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="page" id="page-skills">
+          <div class="section-intro"><div><h2>Keahlian</h2><p>Tambah, ubah, atau hapus keahlian yang tampil di website.</p></div><button class="button primary add-button" data-add="skills">+ Tambah keahlian</button></div>
+          <form id="skills-form" class="editor compact" hidden></form>
+          <div id="skills-list" class="item-list"></div>
+        </section>
+
+        <section class="page" id="page-projects">
+          <div class="section-intro"><div><h2>Proyek</h2><p>Kelola informasi proyek, tautan, dan daftar teknologinya.</p></div><button class="button primary add-button" data-add="projects">+ Tambah proyek</button></div>
+          <form id="projects-form" class="editor compact" hidden></form>
+          <div id="projects-list" class="item-list"></div>
+        </section>
+
+        <section class="page" id="page-education">
+          <div class="section-intro"><div><h2>Pendidikan</h2><p>Perbarui riwayat pendidikan yang ditampilkan di website.</p></div><button class="button primary add-button" data-add="education">+ Tambah pendidikan</button></div>
+          <form id="education-form" class="editor compact" hidden></form>
+          <div id="education-list" class="item-list"></div>
+        </section>
+        <footer>Perubahan tersimpan langsung ke database portfolio.</footer>
+      </main>
+    </div>
+  </body>
+</html>
